@@ -1,6 +1,6 @@
 export default {
-  MAX_ATTACHMENT_SIZE: 5000000,
-  
+    MAX_ATTACHMENT_SIZE: 5000000,
+    STRIPE_KEY: "pk_test_51GzivlL9y4KbuagQELtzAx9hXMs5qKiBoTcfMGMIxY5VXPXLdViMHCRAYBPq2f0lUxG2WDfQMLb2PT2d9iNk9BKh00Jgxu71Qv",
     s3: {
       REGION: "us-east-2",
       BUCKET: "meejosh-notes-app-uploads"
