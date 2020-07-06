@@ -1,61 +1,46 @@
+const dev = {
+  STRIPE_KEY: "YOUR_STRIPE_DEV_PUBLIC_KEY",
+  s3: {
+    REGION: "YOUR_DEV_S3_UPLOADS_BUCKET_REGION",
+    BUCKET: "YOUR_DEV_S3_UPLOADS_BUCKET_NAME"
+  },
+  apiGateway: {
+    REGION: "YOUR_DEV_API_GATEWAY_REGION",
+    URL: "YOUR_DEV_API_GATEWAY_URL"
+  },
+  cognito: {
+    REGION: "YOUR_DEV_COGNITO_REGION",
+    USER_POOL_ID: "YOUR_DEV_COGNITO_USER_POOL_ID",
+    APP_CLIENT_ID: "YOUR_DEV_COGNITO_APP_CLIENT_ID",
+    IDENTITY_POOL_ID: "YOUR_DEV_IDENTITY_POOL_ID"
+  }
+};
+
+const prod = {
+  STRIPE_KEY: "YOUR_STRIPE_PROD_PUBLIC_KEY",
+  s3: {
+    REGION: "YOUR_PROD_S3_UPLOADS_BUCKET_REGION",
+    BUCKET: "YOUR_PROD_S3_UPLOADS_BUCKET_NAME"
+  },
+  apiGateway: {
+    REGION: "YOUR_PROD_API_GATEWAY_REGION",
+    URL: "YOUR_PROD_API_GATEWAY_URL"
+  },
+  cognito: {
+    REGION: "YOUR_PROD_COGNITO_REGION",
+    USER_POOL_ID: "YOUR_PROD_COGNITO_USER_POOL_ID",
+    APP_CLIENT_ID: "YOUR_PROD_COGNITO_APP_CLIENT_ID",
+    IDENTITY_POOL_ID: "YOUR_PROD_IDENTITY_POOL_ID"
+  }
+};
+
+// Default to dev if not set
+const config = process.env.REACT_APP_STAGE === 'prod'
+  ? prod
+  : dev;
+
 export default {
-    MAX_ATTACHMENT_SIZE: 5000000,
-    STRIPE_KEY: "pk_test_51GzivlL9y4KbuagQELtzAx9hXMs5qKiBoTcfMGMIxY5VXPXLdViMHCRAYBPq2f0lUxG2WDfQMLb2PT2d9iNk9BKh00Jgxu71Qv",
-    s3: {
-      REGION: "us-east-2",
-      BUCKET: "meejosh-notes-app-uploads"
-    },
-    apiGateway: {
-      REGION: "us-east-2",
-      URL: "https://yg2vmrma4d.execute-api.us-east-2.amazonaws.com/prod"
-    },
-    cognito: {
-      REGION: "us-east-2",
-      USER_POOL_ID: "us-east-2_nKEaFkE3I",
-      APP_CLIENT_ID: "32bvu8905i9qodd19ltitblrsh",
-      IDENTITY_POOL_ID: "us-east-2:a12205b4-324e-411e-a827-eeb84ce94372"
-    }
-  };
-
-
-
-  const dev = {
-    STRIPE_KEY: "pk_test_51GzivlL9y4KbuagQELtzAx9hXMs5qKiBoTcfMGMIxY5VXPXLdViMHCRAYBPq2f0lUxG2WDfQMLb2PT2d9iNk9BKh00Jgxu71Qv",
-    s3: {
-      REGION: "us-east-2",
-      BUCKET: "notes-app-2-api-dev-attachmentsbucket-i1nd3kt2raua"
-    },
-    apiGateway: {
-      REGION: "us-east-2",
-      URL: "https://api.meejosh.com/dev"
-    },
-    cognito: {
-      REGION: "us-east-2",
-      USER_POOL_ID: "us-east-2_wH9NWE6Es",
-      APP_CLIENT_ID: "6q757jq16fon3eae3b2m43f0f2",
-      IDENTITY_POOL_ID: "us-east-2:e33deae0-5204-4c4e-be49-88126b549156"
-    }
-  };
-  
-  const prod = {
-    STRIPE_KEY: "pk_test_51GzivlL9y4KbuagQELtzAx9hXMs5qKiBoTcfMGMIxY5VXPXLdViMHCRAYBPq2f0lUxG2WDfQMLb2PT2d9iNk9BKh00Jgxu71Qv",
-    s3: {
-      REGION: "us-east-2",
-      BUCKET: "notes-app-2-api-prod-attachmentsbucket-kceova8yq7uk"
-    },
-    apiGateway: {
-      REGION: "us-east-2",
-      URL: "https://api.meejosh.com/prod"
-    },
-    cognito: {
-      REGION: "us-east-2",
-      USER_POOL_ID: "us-east-2_IO5dMQsuj",
-      APP_CLIENT_ID: "2et2c3637umqo6dujbq1eo3dch",
-      IDENTITY_POOL_ID: "us-east-2:6e6e6d36-e42b-4d1e-9e7c-ec22d4d20698"
-    }
-  };
-  
-  // Default to dev if not set
-  const config = process.env.REACT_APP_STAGE === 'prod'
-    ? prod
-    : dev;
+  // Add common config values here
+  MAX_ATTACHMENT_SIZE: 5000000,
+  ...config
+};
